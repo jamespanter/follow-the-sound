@@ -1,16 +1,25 @@
 const setTargetObjectLocation = () => {
     targetObject = document.getElementById('target-object');
-    const x = (Math.random() * 100) - 5,
-        y = (Math.random() * 100) - 5;
+    let x = (Math.random() * 100) - 15,
+        y = (Math.random() * 100) - 15;
+
+    if (x < 0) {
+        x = 0
+    }
+
+    if (y < 0) {
+        y = 0
+    }
     targetObject.style.left = x + '%';
     targetObject.style.top = y + '%';
 }
 const getPlaybackRate = (distance) => {
-    distance = 10 - (distance / 100)
-    console.log(distance)
+    distance = Math.round(10 - (distance / 100));
+
+    console.log('playback multiplier: ' + distance);
 
     if (distance < 1) {
-        return 1
+        return 1;
     } else return distance;
 }
 
@@ -20,12 +29,13 @@ window.addEventListener('mousemove', () => {
     let distanceY = Math.round(Math.pow(event.pageY - targetObjectPosition.y, 2));
     let distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
 
-    console.log('x: ' + distanceX, 'y: ' + distanceY, 'distance: ' + distance)
+    console.log('x: ' + distanceX, 'y: ' + distanceY, 'distance: ' + distance);
 
     const audio = document.getElementById('sound');
     audio.playbackRate = getPlaybackRate(distance);
 })
 
 const win = () => {
-    alert('YOU FOUND THE SOUND')
+    targetObject.classList.add('reveal');
+    alert('YOU FOUND THE SQUARE');
 }

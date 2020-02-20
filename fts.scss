@@ -13,7 +13,7 @@ body {
 
 #canvas {
     font-family: 'Raleway', sans-serif;
-    font-size: 32px;
+    font-size: 40px;
     display: flex;
     color: black;
     justify-content: center;
@@ -22,12 +22,19 @@ body {
     height: 100%;
     background-color: $main-color;
 
+    &::selection {
+        color: black;
+    }
+
     #target-object {
         position: absolute;
         width: 150px;
         height: 150px;
-        background-color: red;
-        background-color: $main-color;
         background-color: transparent;
+        // background-color: blue;
+
+        &.reveal {
+            background-color: red;
+        }
     }
 }

@@ -12,7 +12,7 @@ body {
 
 #canvas {
   font-family: 'Raleway', sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,12 +28,22 @@ body {
   background-color: #9bdf9b;
 }
 
+#canvas::-moz-selection {
+  color: black;
+}
+
+#canvas::selection {
+  color: black;
+}
+
 #canvas #target-object {
   position: absolute;
   width: 150px;
   height: 150px;
-  background-color: red;
-  background-color: #9bdf9b;
   background-color: transparent;
+}
+
+#canvas #target-object.reveal {
+  background-color: red;
 }
 /*# sourceMappingURL=fts.css.map */
