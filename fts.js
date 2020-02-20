@@ -37,5 +37,4 @@ window.addEventListener('mousemove', () => {
 
 const win = () => {
     targetObject.classList.add('reveal');
-    alert('YOU FOUND THE SQUARE');
 }

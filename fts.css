@@ -38,12 +38,22 @@ body {
 
 #canvas #target-object {
   position: absolute;
+  text-align: center;
+  color: #9bdf9b;
   width: 150px;
   height: 150px;
   background-color: transparent;
 }
 
+#canvas #target-object::-moz-selection {
+  color: #9bdf9b;
+}
+
+#canvas #target-object::selection {
+  color: #9bdf9b;
+}
+
 #canvas #target-object.reveal {
-  background-color: red;
+  background-color: black;
 }
 /*# sourceMappingURL=fts.css.map */

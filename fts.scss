@@ -28,13 +28,19 @@ body {
 
     #target-object {
         position: absolute;
+        text-align: center;
+        color: $main-color;
         width: 150px;
         height: 150px;
         background-color: transparent;
         // background-color: blue;
 
+        &::selection {
+            color: $main-color;
+        }
+
         &.reveal {
-            background-color: red;
+            background-color: black;
         }
     }
 }
