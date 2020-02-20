@@ -3,20 +3,27 @@ const setTargetObjectLocation = () => {
     const x = (Math.random() * 100) - 5,
         y = (Math.random() * 100) - 5;
     targetObject.style.left = x + '%';
-    targetObject.style.top = y + 'px';
+    targetObject.style.top = y + '%';
+}
+const getPlaybackRate = (distance) => {
+    distance = 10 - (distance / 100)
+    console.log(distance)
 
-    console.log(x, y)
+    if (distance < 1) {
+        return 1
+    } else return distance;
 }
 
 window.addEventListener('mousemove', () => {
-    console.log('Cursor x: ' + event.pageX, 'y: ' + event.pageY)
-    var targetObjectPosition = targetObject.getBoundingClientRect();
+    let targetObjectPosition = targetObject.getBoundingClientRect();
+    let distanceX = Math.round(Math.pow(event.pageX - targetObjectPosition.x, 2));
+    let distanceY = Math.round(Math.pow(event.pageY - targetObjectPosition.y, 2));
+    let distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
 
-    console.log('Object x: ' + targetObjectPosition.x, 'y: ' + targetObjectPosition.y)
-    let distance = event.pageX - targetObjectPosition.x;
-    console.log(distance)
-    const audio = new Audio('sound.wav');
-    audio.play();
+    console.log('x: ' + distanceX, 'y: ' + distanceY, 'distance: ' + distance)
+
+    const audio = document.getElementById('sound');
+    audio.playbackRate = getPlaybackRate(distance);
 })
 
 const win = () => {
