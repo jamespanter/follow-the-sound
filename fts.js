@@ -22,6 +22,7 @@ const getPlaybackRate = (distance) => {
         return 1;
     } else return distance;
 }
+const audio = document.getElementById('sound');
 
 window.addEventListener('mousemove', () => {
     let targetObjectPosition = targetObject.getBoundingClientRect();
@@ -31,10 +32,18 @@ window.addEventListener('mousemove', () => {
 
     console.log('x: ' + distanceX, 'y: ' + distanceY, 'distance: ' + distance);
 
-    const audio = document.getElementById('sound');
     audio.playbackRate = getPlaybackRate(distance);
 })
 
 const win = () => {
     targetObject.classList.add('reveal');
+    targetObject.style.color = 'limegreen';
+}
+
+const playSound = () => {
+    audio.play()
+}
+
+const pauseSound = () => {
+    audio.pause()
 }

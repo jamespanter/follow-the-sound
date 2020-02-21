@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fts.css">
     <meta charset="UTF-8">
@@ -13,9 +14,13 @@
 <body onload="setTargetObjectLocation()">
     <div id="canvas">
         <div id="target-object" onclick="win()">YOU FOUND IT</div>
-        CLICK ON THE HIDDEN SQUARE</br>
+        FOLLOW THE SOUND TO CLICK ON THE HIDDEN SQUARE</br>
+        <div>
+            <button id="play-sound" onclick="playSound()"><span class="fas fa-play"></span></button>
+            <button id="play-sound" onclick="pauseSound()"> <span class=" fas fa-stop"></span></button>
+        </div>
     </div>
-    <audio autoplay loop id="sound">
+    <audio controls loop id="sound">
         <source src="beep.mp3" type="audio/mp3">
     </audio>
 </body>

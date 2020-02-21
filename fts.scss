@@ -14,8 +14,9 @@ body {
 #canvas {
     font-family: 'Raleway', sans-serif;
     font-size: 40px;
-    display: flex;
     color: black;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -27,9 +28,10 @@ body {
     }
 
     #target-object {
+        cursor: pointer;
         position: absolute;
         text-align: center;
-        color: $main-color;
+        color: transparent;
         width: 150px;
         height: 150px;
         background-color: transparent;
@@ -40,7 +42,17 @@ body {
         }
 
         &.reveal {
+            color: transparent;
             background-color: black;
         }
+    }
+
+    button {
+        margin-top: 10px;
+        background-color: transparent;
+        font-size: 32px;
+        box-shadow: 0;
+        border: none;
+        cursor: pointer;
     }
 }
