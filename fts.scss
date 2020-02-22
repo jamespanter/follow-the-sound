@@ -51,8 +51,11 @@ body {
         margin-top: 10px;
         background-color: transparent;
         font-size: 32px;
-        box-shadow: 0;
         border: none;
         cursor: pointer;
+
+        &.active {
+            color: green;
+        }
     }
 }

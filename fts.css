@@ -67,9 +67,11 @@ body {
   margin-top: 10px;
   background-color: transparent;
   font-size: 32px;
-  -webkit-box-shadow: 0;
-          box-shadow: 0;
   border: none;
   cursor: pointer;
+}
+
+#canvas button.active {
+  color: green;
 }
 /*# sourceMappingURL=fts.css.map */

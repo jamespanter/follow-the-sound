@@ -38,12 +38,22 @@ window.addEventListener('mousemove', () => {
 const win = () => {
     targetObject.classList.add('reveal');
     targetObject.style.color = 'limegreen';
+
+    pauseSound()
 }
+const playButton = document.getElementById('play-sound');
+const pauseButton = document.getElementById('pause-sound');
+
 
 const playSound = () => {
-    audio.play()
+    audio.play();
+    pauseButton.classList.remove('active');
+    playButton.classList.add('active');
 }
 
 const pauseSound = () => {
-    audio.pause()
+    audio.pause();
+    playButton.classList.remove('active');
+    pauseButton.classList.add('active');
+
 }
