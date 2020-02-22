@@ -47,13 +47,14 @@ const pauseButton = document.getElementById('pause-sound');
 
 const playSound = () => {
     audio.play();
-    pauseButton.classList.remove('active');
-    playButton.classList.add('active');
+    pauseButton.classList.add('active');
+    pauseButton.classList.remove('inactive');
+    playButton.classList.add('inactive');
 }
 
 const pauseSound = () => {
     audio.pause();
-    playButton.classList.remove('active');
-    pauseButton.classList.add('active');
-
+    playButton.classList.add('active');
+    playButton.classList.remove('inactive');
+    pauseButton.classList.add('inactive');
 }

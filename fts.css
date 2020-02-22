@@ -72,6 +72,10 @@ body {
 }
 
 #canvas button.active {
-  color: green;
+  display: unset;
+}
+
+#canvas button.inactive {
+  display: none;
 }
 /*# sourceMappingURL=fts.css.map */
