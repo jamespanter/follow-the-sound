@@ -19,7 +19,9 @@ const setTargetObjectLocation = () => {
     }
     targetObject.style.left = x + '%';
     targetObject.style.top = y + '%';
+
 }
+
 const getPlaybackRate = (distance) => {
     distance = Math.round(9 - (distance / 100));
 
@@ -43,9 +45,15 @@ window.addEventListener('mousemove', () => {
 
 const win = () => {
     // targetObject.classList.add('reveal');
+    revealBird()
     increaseCounter();
     setTargetObjectLocation();
 }
+const revealBird = () => {
+    const birdImage = document.getElementById('bird-image');
+    birdImage.classList.add('hide')
+}
+
 const audioWin = document.getElementById('sound-two')
 const increaseCounter = () => {
     score += 10;

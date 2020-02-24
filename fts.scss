@@ -42,10 +42,30 @@ body {
             position: absolute;
             text-align: center;
             color: transparent;
-            width: 225px;
-            height: 225px;
+            width: 250px;
+            height: 250px;
             background-color: transparent;
             background-color: blue;
+
+            img {
+                display: none;
+                position: absolute;
+                object-fit: contain;
+                top: 0;
+                left: 0;
+                width: 250px;
+                height: 250px;
+
+                &.hide {
+                    display: unset;
+                    -moz-animation: cssAnimation 0s ease-in 2s forwards;
+                    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
+                    -o-animation: cssAnimation 0s ease-in 2s forwards;
+                    animation: cssAnimation 0s ease-in 2s forwards;
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                }
+            }
         }
     }
 
@@ -98,5 +118,24 @@ body {
         p {
             font-size: 70px;
         }
+    }
+}
+
+
+
+
+@keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+@-webkit-keyframes cssAnimation {
+    to {
+        width: 0;
+        height: 0;
+        visibility: hidden;
     }
 }
