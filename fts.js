@@ -43,7 +43,6 @@ window.addEventListener('mousemove', () => {
 
 const win = () => {
     // targetObject.classList.add('reveal');
-    // targetObject.style.color = 'limegreen';
     increaseCounter();
     setTargetObjectLocation();
 }

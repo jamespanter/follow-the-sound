@@ -39,12 +39,11 @@ body {
 
         #target-object {
             z-index: 1;
-            cursor: pointer;
             position: absolute;
             text-align: center;
             color: transparent;
-            width: 150px;
-            height: 150px;
+            width: 225px;
+            height: 225px;
             background-color: transparent;
             background-color: blue;
         }
@@ -74,6 +73,10 @@ body {
 
         &.inactive {
             display: none;
+        }
+
+        span {
+            color: $text-background-color
         }
     }
 
