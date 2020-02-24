@@ -13,15 +13,21 @@
 
 <body onload="setTargetObjectLocation()">
     <div id="canvas">
-        <div id="target-object" onclick="win()">YOU FOUND IT</div>
-        FOLLOW THE SOUND TO CLICK ON THE HIDDEN SQUARE</br>
-        <div>
-            <button id="play-sound" onclick="playSound()"><span class="fas fa-play"></span></button>
-            <button id="pause-sound" onclick="pauseSound()" class="inactive"><span class=" fas fa-stop"></span></button>
+        <div id="instruction-panel">
+            <div id="target-object">YOU FOUND IT</div>
+            FOLLOW THE SOUND TO CLICK ON THE HIDDEN SQUARE</br>
+            <div>
+                <button id="play-sound"><span class="fas fa-play"></span></button>
+                <button id="pause-sound" class="inactive"><span class=" fas fa-stop"></span></button>
+            </div>
+        </div>
+        <div id="counter">
+            <h2>Score</h2>
+            <p id="find-counter">0</p>
         </div>
     </div>
     <audio loop id="sound">
-        <source src="beep.mp3" type="audio/mp3">
+        <source src="beep1.mp3" type="audio/mp3">
     </audio>
 </body>
 

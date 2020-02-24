@@ -8,12 +8,10 @@
 body {
   width: 100vw;
   height: 100vh;
+  font-weight: 900;
 }
 
 #canvas {
-  font-family: 'Raleway', sans-serif;
-  font-size: 40px;
-  color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -27,20 +25,37 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  color: black;
   width: 100%;
   height: 100%;
-  background-color: #9bdf9b;
+  background: url(background-forest.jpg);
 }
 
-#canvas::-moz-selection {
-  color: black;
+#canvas #instruction-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10%;
+  color: white;
 }
 
-#canvas::selection {
-  color: black;
-}
-
-#canvas #target-object {
+#canvas #instruction-panel #target-object {
+  z-index: 1;
   cursor: pointer;
   position: absolute;
   text-align: center;
@@ -48,17 +63,18 @@ body {
   width: 150px;
   height: 150px;
   background-color: transparent;
+  background-color: blue;
 }
 
-#canvas #target-object::-moz-selection {
+#canvas #instruction-panel #target-object::-moz-selection {
   color: #9bdf9b;
 }
 
-#canvas #target-object::selection {
+#canvas #instruction-panel #target-object::selection {
   color: #9bdf9b;
 }
 
-#canvas #target-object.reveal {
+#canvas #instruction-panel #target-object.reveal {
   color: transparent;
   background-color: black;
 }
@@ -77,5 +93,32 @@ body {
 
 #canvas button.inactive {
   display: none;
+}
+
+#canvas #counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  border-radius: 10px;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+#canvas #counter p {
+  font-size: 70px;
 }
 /*# sourceMappingURL=fts.css.map */
