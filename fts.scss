@@ -1,10 +1,15 @@
 @import 'mixins';
 $main-color: rgb(155, 223, 155);
+$text-background-color: rgba(255, 255, 255, 0.6);
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+
+    &::selection {
+        color: inherit;
+    }
 }
 
 body {
@@ -15,18 +20,22 @@ body {
 
 #canvas {
     @include flex-column-center;
-    justify-content: left;
     font-family: 'Raleway', sans-serif;
-    font-size: 40px;
-    color: black;
     width: 100%;
     height: 100%;
     background: url(background-forest.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     #instruction-panel {
         @include flex-column-center;
+        background-color: $text-background-color;
+        border-radius: 10px;
+        padding: 20px;
         margin-top: 10%;
-        color: white;
+        font-size: 48px;
+        text-align: center;
 
         #target-object {
             z-index: 1;
@@ -38,15 +47,6 @@ body {
             height: 150px;
             background-color: transparent;
             background-color: blue;
-
-            &::selection {
-                color: $main-color;
-            }
-
-            &.reveal {
-                color: transparent;
-                background-color: black;
-            }
         }
     }
 
@@ -56,6 +56,17 @@ body {
         font-size: 32px;
         border: none;
         cursor: pointer;
+        color: white;
+        font-size: 60px;
+
+        &#reset-button {
+            color: black;
+            font-size: 50px;
+
+            &:hover {
+                color: rgb(88, 76, 76);
+            }
+        }
 
         &.active {
             display: unset;
@@ -68,14 +79,18 @@ body {
 
     #counter {
         @include flex-column-center;
+        font-size: 50px;
         color: black;
         border-radius: 10px;
         position: absolute;
-        right: 5%;
-        bottom: 5%;
+        left: 5vh;
+        top: 5vh;
         padding: 20px;
+        background-color: $text-background-color;
 
-        background-color: rgba(255, 255, 255, 0.6);
+        h2 {
+            font-size: 50px;
+        }
 
         p {
             font-size: 70px;

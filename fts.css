@@ -5,6 +5,14 @@
           box-sizing: border-box;
 }
 
+*::-moz-selection {
+  color: inherit;
+}
+
+*::selection {
+  color: inherit;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -25,15 +33,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
   font-family: 'Raleway', sans-serif;
-  font-size: 40px;
-  color: black;
   width: 100%;
   height: 100%;
   background: url(background-forest.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #canvas #instruction-panel {
@@ -50,8 +56,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  padding: 20px;
   margin-top: 10%;
-  color: white;
+  font-size: 48px;
+  text-align: center;
 }
 
 #canvas #instruction-panel #target-object {
@@ -66,25 +76,23 @@ body {
   background-color: blue;
 }
 
-#canvas #instruction-panel #target-object::-moz-selection {
-  color: #9bdf9b;
-}
-
-#canvas #instruction-panel #target-object::selection {
-  color: #9bdf9b;
-}
-
-#canvas #instruction-panel #target-object.reveal {
-  color: transparent;
-  background-color: black;
-}
-
 #canvas button {
   margin-top: 10px;
   background-color: transparent;
   font-size: 32px;
   border: none;
   cursor: pointer;
+  color: white;
+  font-size: 60px;
+}
+
+#canvas button#reset-button {
+  color: black;
+  font-size: 50px;
+}
+
+#canvas button#reset-button:hover {
+  color: #584c4c;
 }
 
 #canvas button.active {
@@ -109,13 +117,18 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 50px;
   color: black;
   border-radius: 10px;
   position: absolute;
-  right: 5%;
-  bottom: 5%;
+  left: 5vh;
+  top: 5vh;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+#canvas #counter h2 {
+  font-size: 50px;
 }
 
 #canvas #counter p {

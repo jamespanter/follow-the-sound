@@ -2,7 +2,8 @@ const playButton = document.getElementById('play-sound'),
     pauseButton = document.getElementById('pause-sound'),
     audio = document.getElementById('sound');
 
-let score = 0;
+let counter = document.getElementById('find-counter'),
+    score = 0;
 
 const setTargetObjectLocation = () => {
     targetObject = document.getElementById('target-object');
@@ -20,7 +21,7 @@ const setTargetObjectLocation = () => {
     targetObject.style.top = y + '%';
 }
 const getPlaybackRate = (distance) => {
-    distance = Math.round(8 - (distance / 100));
+    distance = Math.round(9 - (distance / 100));
 
     console.log('playback multiplier: ' + distance);
 
@@ -41,20 +42,21 @@ window.addEventListener('mousemove', () => {
 })
 
 const win = () => {
-    targetObject.classList.add('reveal');
-    targetObject.style.color = 'limegreen';
+    // targetObject.classList.add('reveal');
+    // targetObject.style.color = 'limegreen';
     increaseCounter();
     setTargetObjectLocation();
 }
-
+const audioWin = document.getElementById('sound-two')
 const increaseCounter = () => {
-    let counter = document.getElementById('find-counter');
     score += 10;
     counter.innerHTML = score;
+    audioWin.play();
 }
 
 const playSound = () => {
     audio.play();
+    audio.volume = 0.3;
     pauseButton.classList.add('active');
     pauseButton.classList.remove('inactive');
     playButton.classList.add('inactive');
@@ -67,6 +69,13 @@ const pauseSound = () => {
     pauseButton.classList.add('inactive');
 }
 
+const resetScore = () => {
+    score = 0;
+    counter.innerHTML = score;
+    pauseSound();
+}
+
 document.getElementById('target-object').addEventListener("click", win);
 document.getElementById('play-sound').addEventListener("click", playSound);
 document.getElementById('pause-sound').addEventListener("click", pauseSound);
+document.getElementById('reset-button').addEventListener("click", resetScore);
