@@ -2,37 +2,41 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="fts.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Follow the sound</title>
-    <script src="fts.js" async defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="fts.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Follow the sound</title>
+  <script src="fts.js" async defer></script>
 </head>
 
 <body onload="setTargetObjectLocation()">
-    <div id="canvas">
-        <div id="instruction-panel">
-            FOLLOW THE SOUND TO CLICK ON THE HIDDEN BIRD</br>
-            <div>
-                <div id="target-object">YOU FOUND IT<img id="bird-image" src="bird-found.png"></div>
-            </div>
-        </div>
-        <button id="play-sound"><span class="fas fa-volume-up"></span></button>
-        <button id="pause-sound" class="inactive"><span class=" fas fa-volume-mute"></span></button>
-        <div id="counter">
-            <h2>SCORE</h2>
-            <p id="find-counter">0</p>
-            <button id="reset-button">RESET</button>
-        </div>
+  <div id="canvas">
+    <div id="instruction-panel">
+      FOLLOW THE SOUND TO CLICK ON THE HIDDEN BIRD</br>
+      <div>
+        <div id="target-object">YOU FOUND IT</div>
+        <img id="bird-image" src="bird-found.png">
+      </div>
     </div>
-    <audio loop id="sound">
-        <source src="bird3.wav" type="audio/wav">
-    </audio>
-    <audio id="sound-two">
-        <source src="clang.wav" type="audio/wav">
-    </audio>
+    <button id="play-sound"><span class="fas fa-volume-mute"></span></button>
+    <button id="pause-sound" class="inactive"><span class="fas fa-volume-up"></span></button>
+    <div id="counter">
+      <h2>SCORE</h2>
+      <p id="find-counter">0</p>
+      <button id="reset-button">RESET</button>
+    </div>
+  </div>
+  <audio loop id="sound">
+    <source src="bird3.wav" type="audio/wav">
+  </audio>
+  <audio id="sound-two">
+    <source src="clang.wav" type="audio/wav">
+  </audio>
+  <audio id="sound-three">
+    <source src="lose.mp3" type="audio/mp3">
+  </audio>
 </body>
 
 </html>

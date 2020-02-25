@@ -3,136 +3,124 @@ $main-color: rgb(155, 223, 155);
 $text-background-color: rgba(255, 255, 255, 0.6);
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 
-    &::selection {
-        color: inherit;
-    }
+  &::selection {
+    color: inherit;
+  }
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    font-weight: 900;
+  width: 100vw;
+  height: 100vh;
+  font-weight: 900;
 }
 
 #canvas {
+  @include flex-column-center;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  height: 100%;
+  background: url(background-forest.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  #instruction-panel {
     @include flex-column-center;
-    font-family: 'Raleway', sans-serif;
-    width: 100%;
-    height: 100%;
-    background: url(background-forest.jpg);
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: $text-background-color;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10%;
+    font-size: 48px;
+    text-align: center;
 
-    #instruction-panel {
-        @include flex-column-center;
-        background-color: $text-background-color;
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 10%;
-        font-size: 48px;
-        text-align: center;
-
-        #target-object {
-            z-index: 1;
-            position: absolute;
-            text-align: center;
-            color: transparent;
-            width: 250px;
-            height: 250px;
-            background-color: transparent;
-            background-color: blue;
-
-            img {
-                display: none;
-                position: absolute;
-                object-fit: contain;
-                top: 0;
-                left: 0;
-                width: 250px;
-                height: 250px;
-
-                &.hide {
-                    display: unset;
-                    -moz-animation: cssAnimation 0s ease-in 2s forwards;
-                    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
-                    -o-animation: cssAnimation 0s ease-in 2s forwards;
-                    animation: cssAnimation 0s ease-in 2s forwards;
-                    -webkit-animation-fill-mode: forwards;
-                    animation-fill-mode: forwards;
-                }
-            }
-        }
+    #target-object {
+      z-index: 1;
+      position: absolute;
+      text-align: center;
+      color: transparent;
+      width: 250px;
+      height: 250px;
+      background-color: transparent;
+      background-color: blue;
+      opacity: 90%;
     }
 
-    button {
-        margin-top: 10px;
-        background-color: transparent;
-        font-size: 32px;
-        border: none;
-        cursor: pointer;
-        color: white;
-        font-size: 60px;
+    img {
+      display: none;
+      position: absolute;
+      width: 250px;
+      height: 250px;
+    }
+  }
 
-        &#reset-button {
-            color: black;
-            font-size: 50px;
+  button {
+    margin-top: 10px;
+    background-color: transparent;
+    font-size: 32px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 60px;
 
-            &:hover {
-                color: rgb(88, 76, 76);
-            }
-        }
+    &#reset-button {
+      color: black;
+      font-size: 50px;
 
-        &.active {
-            display: unset;
-        }
-
-        &.inactive {
-            display: none;
-        }
-
-        span {
-            color: $text-background-color
-        }
+      &:hover {
+        color: rgb(88, 76, 76);
+      }
     }
 
-    #counter {
-        @include flex-column-center;
-        font-size: 50px;
-        color: black;
-        border-radius: 10px;
-        position: absolute;
-        left: 5vh;
-        top: 5vh;
-        padding: 20px;
-        background-color: $text-background-color;
-
-        h2 {
-            font-size: 50px;
-        }
-
-        p {
-            font-size: 70px;
-        }
+    &.active {
+      display: unset;
     }
+
+    &.inactive {
+      display: none;
+    }
+
+    span {
+      color: $text-background-color
+    }
+  }
+
+  #counter {
+    @include flex-column-center;
+    font-size: 50px;
+    color: black;
+    border-radius: 10px;
+    position: absolute;
+    left: 5vh;
+    top: 5vh;
+    padding: 20px;
+    background-color: $text-background-color;
+
+    h2 {
+      font-size: 50px;
+    }
+
+    p {
+      font-size: 70px;
+    }
+  }
 }
 
 @keyframes cssAnimation {
-    to {
-        width: 0;
-        height: 0;
-        overflow: hidden;
-    }
+  to {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
 }
 
 @-webkit-keyframes cssAnimation {
-    to {
-        width: 0;
-        height: 0;
-        visibility: hidden;
-    }
+  to {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
 }
