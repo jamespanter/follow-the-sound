@@ -92,7 +92,7 @@ const pauseSound = () => {
 }
 
 const resetScore = () => {
-  score = 0;
+  score = 1;
   counter.innerHTML = score;
   pauseSound();
 }
