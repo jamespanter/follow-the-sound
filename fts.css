@@ -81,6 +81,8 @@ body {
   position: absolute;
   width: 250px;
   height: 250px;
+  top: 5vh;
+  left: 35vh;
 }
 
 #canvas button {

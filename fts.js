@@ -9,7 +9,7 @@ let counter = document.getElementById('find-counter'),
 
 const setTargetObjectLocation = () => {
   targetObject = document.getElementById('target-object');
-  x = (Math.random() * 100) - 20,
+  let x = (Math.random() * 100) - 20,
     y = (Math.random() * 100) - 30;
   if (x < 0) {
     x = 0
@@ -19,8 +19,8 @@ const setTargetObjectLocation = () => {
   }
   targetObject.style.left = x + '%';
   targetObject.style.top = y + '%';
-  document.getElementById('bird-image').style.left = x + '%'
-  document.getElementById('bird-image').style.top = y + '%'
+  // document.getElementById('bird-image').style.left = x + '%'
+  // document.getElementById('bird-image').style.top = y + '%'
 }
 
 const getPlaybackRate = (distance) => {
@@ -30,15 +30,6 @@ const getPlaybackRate = (distance) => {
     return 1;
   } else return distance;
 }
-
-window.addEventListener('mousemove', () => {
-  let targetObjectPosition = targetObject.getBoundingClientRect();
-  let distanceX = Math.round(Math.pow(event.pageX - targetObjectPosition.x, 2)),
-    distanceY = Math.round(Math.pow(event.pageY - targetObjectPosition.y, 2)),
-    distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
-  console.log('x: ' + distanceX, 'y: ' + distanceY, 'distance: ' + distance);
-  audio.playbackRate = getPlaybackRate(distance);
-})
 
 const lose = () => {
   decreaseCounter()
@@ -57,7 +48,6 @@ const win = () => {
   setTargetObjectLocation();
 }
 const revealBird = () => {
-
   document.getElementById("bird-image").style.display = "unset";
   hideImageDelay()
 }
@@ -92,15 +82,24 @@ const pauseSound = () => {
 }
 
 const resetScore = () => {
-  score = 1;
+  score = 0;
   counter.innerHTML = score;
   pauseSound();
 }
 
-window.addEventListener('click', function (e) {
-  if (!targetObject.contains(e.target)) {
+window.addEventListener('click', (e) => {
+  if (!targetObject.contains(e.target) && !document.getElementById('reset-button').contains(e.target) && !document.getElementById('play-sound').contains(e.target) && !document.getElementById('pause-sound').contains(e.target)) {
     lose()
   }
+})
+
+window.addEventListener('mousemove', () => {
+  let targetObjectPosition = targetObject.getBoundingClientRect();
+  let distanceX = Math.round(Math.pow(event.pageX - targetObjectPosition.x, 2)),
+    distanceY = Math.round(Math.pow(event.pageY - targetObjectPosition.y, 2)),
+    distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
+  console.log('x^2: ' + distanceX, 'y^2: ' + distanceY, 'distance^0.5: ' + distance);
+  audio.playbackRate = getPlaybackRate(distance);
 })
 
 document.getElementById('target-object').addEventListener("click", win);
