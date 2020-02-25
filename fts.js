@@ -7,6 +7,7 @@ let counter = document.getElementById('find-counter'),
 
 const setTargetObjectLocation = () => {
     targetObject = document.getElementById('target-object');
+
     let x = (Math.random() * 100) - 15,
         y = (Math.random() * 100) - 15;
 
@@ -44,7 +45,6 @@ window.addEventListener('mousemove', () => {
 })
 
 const win = () => {
-    // targetObject.classList.add('reveal');
     revealBird()
     increaseCounter();
     setTargetObjectLocation();
