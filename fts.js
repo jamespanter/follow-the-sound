@@ -12,7 +12,7 @@ let counter = document.getElementById('find-counter'),
 
 const setTargetObjectLocation = () => {
   targetObject = document.getElementById('target-object');
-  let x = Math.round((Math.random() * 100)) - 20,
+  let x = Math.round((Math.random() * 100)) - 30,
     y = Math.round((Math.random() * 100)) - 30;
   if (x < 0) {
     x = 0
