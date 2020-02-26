@@ -2,13 +2,13 @@ const playButton = document.getElementById('play-sound'),
   pauseButton = document.getElementById('pause-sound'),
   audioWin = document.getElementById('sound-two'),
   audioLose = document.getElementById('sound-three'),
-  audio = document.getElementById('sound');
+  audioDistance = document.getElementById('sound');
 
 let counter = document.getElementById('find-counter'),
-  score = 0;
-
-let xArray = [],
-  yArray = []
+  birdImage = document.getElementById('bird-image'),
+  score = 0,
+  arrayOfXCoords = [],
+  arrayOfYCoords = [];
 
 const setTargetObjectLocation = () => {
   targetObject = document.getElementById('target-object');
@@ -22,14 +22,13 @@ const setTargetObjectLocation = () => {
   }
   targetObject.style.left = x + '%';
   targetObject.style.top = y + '%';
-
-  xArray.push(x)
-  yArray.push(y)
+  arrayOfXCoords.push(x)
+  arrayOfYCoords.push(y)
 }
 
 const getPlaybackRate = (distance) => {
   distance = Math.round(9 - (distance / 100));
-  // console.log('playback multiplier: ' + distance);
+  console.log('playback multiplier: ' + distance);
   if (distance < 1) {
     return 1;
   } else return distance;
@@ -47,18 +46,23 @@ const decreaseCounter = () => {
 }
 
 const win = () => {
-  revealBird(xArray, yArray);
+  revealBird(arrayOfXCoords, arrayOfYCoords);
   increaseCounter();
   setTargetObjectLocation();
 }
-const revealBird = (xArray, yArray) => {
-  document.getElementById("bird-image").style.display = "unset";
-  // console.log('x array: ' + xArray, 'y array: ' + yArray)
-  let xStorage = xArray[xArray.length - 1];
-  let yStorage = yArray[yArray.length - 1];
+const revealBird = (arrayOfXCoords, arrayOfYCoords) => {
+  getRandomBirdImage()
+  birdImage.style.display = "unset";
+  // console.log('x array: ' + arrayOfXCoords, 'y array: ' + arrayOfYCoords)
+  let xStorage = arrayOfXCoords[arrayOfXCoords.length - 1];
+  let yStorage = arrayOfYCoords[arrayOfYCoords.length - 1];
   document.getElementById('bird-image').style.left = xStorage + '%'
   document.getElementById('bird-image').style.top = yStorage + '%'
   hideImageDelay()
+}
+const getRandomBirdImage = () => {
+  const arrayOfBirdImages = ["bird-found.png", "bird-found-2.png", "bird-found-3.png", "bird-found-4.png"];
+  birdImage.src = arrayOfBirdImages[Math.floor(Math.random() * arrayOfBirdImages.length)];
 }
 
 function hideImageDelay() {
@@ -66,7 +70,7 @@ function hideImageDelay() {
 }
 
 function doHide() {
-  document.getElementById("bird-image").style.display = "none";
+  birdImage.style.display = "none";
 }
 
 const increaseCounter = () => {
@@ -76,15 +80,15 @@ const increaseCounter = () => {
 }
 
 const playSound = () => {
-  audio.play();
-  audio.volume = 0.3;
+  audioDistance.play();
+  audioDistance.volume = 0.3;
   pauseButton.classList.add('active');
   pauseButton.classList.remove('inactive');
   playButton.classList.add('inactive');
 }
 
 const pauseSound = () => {
-  audio.pause();
+  audioDistance.pause();
   playButton.classList.add('active');
   playButton.classList.remove('inactive');
   pauseButton.classList.add('inactive');
@@ -108,7 +112,7 @@ window.addEventListener('mousemove', () => {
     distanceY = Math.round(Math.pow(event.pageY - targetObjectPosition.y, 2)),
     distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
   // console.log('x^2: ' + distanceX, 'y^2: ' + distanceY, 'distance^0.5: ' + distance);
-  audio.playbackRate = getPlaybackRate(distance);
+  audioDistance.playbackRate = getPlaybackRate(distance);
 })
 
 document.getElementById('target-object').addEventListener("click", win);
