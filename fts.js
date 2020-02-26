@@ -22,13 +22,12 @@ const setTargetObjectLocation = () => {
   }
   targetObject.style.left = x + '%';
   targetObject.style.top = y + '%';
-  arrayOfXCoords.push(x)
-  arrayOfYCoords.push(y)
+  arrayOfXCoords.push(x);
+  arrayOfYCoords.push(y);
 }
 
 const getPlaybackRate = (distance) => {
-  distance = Math.round(9 - (distance / 100));
-  console.log('playback multiplier: ' + distance);
+  distance = Math.round((9 - (distance / 200)) / 2);
   if (distance < 1) {
     return 1;
   } else return distance;
@@ -113,6 +112,7 @@ window.addEventListener('mousemove', () => {
     distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
   // console.log('x^2: ' + distanceX, 'y^2: ' + distanceY, 'distance^0.5: ' + distance);
   audioDistance.playbackRate = getPlaybackRate(distance);
+  console.log('playback multiplier: ' + getPlaybackRate(distance));
 })
 
 document.getElementById('target-object').addEventListener("click", win);

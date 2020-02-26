@@ -72,7 +72,6 @@ body {
   width: 250px;
   height: 250px;
   background-color: transparent;
-  background-color: blue;
   opacity: 90%;
 }
 
@@ -88,11 +87,10 @@ body {
 #canvas button {
   margin-top: 10px;
   background-color: transparent;
-  font-size: 32px;
   border: none;
   cursor: pointer;
   color: white;
-  font-size: 60px;
+  font-size: 80px;
 }
 
 #canvas button#reset-button {
