@@ -7,10 +7,13 @@ const playButton = document.getElementById('play-sound'),
 let counter = document.getElementById('find-counter'),
   score = 0;
 
+let xArray = [],
+  yArray = []
+
 const setTargetObjectLocation = () => {
   targetObject = document.getElementById('target-object');
-  let x = (Math.random() * 100) - 20,
-    y = (Math.random() * 100) - 30;
+  let x = Math.round((Math.random() * 100)) - 20,
+    y = Math.round((Math.random() * 100)) - 30;
   if (x < 0) {
     x = 0
   }
@@ -19,13 +22,14 @@ const setTargetObjectLocation = () => {
   }
   targetObject.style.left = x + '%';
   targetObject.style.top = y + '%';
-  // document.getElementById('bird-image').style.left = x + '%'
-  // document.getElementById('bird-image').style.top = y + '%'
+
+  xArray.push(x)
+  yArray.push(y)
 }
 
 const getPlaybackRate = (distance) => {
   distance = Math.round(9 - (distance / 100));
-  console.log('playback multiplier: ' + distance);
+  // console.log('playback multiplier: ' + distance);
   if (distance < 1) {
     return 1;
   } else return distance;
@@ -43,12 +47,17 @@ const decreaseCounter = () => {
 }
 
 const win = () => {
-  revealBird();
+  revealBird(xArray, yArray);
   increaseCounter();
   setTargetObjectLocation();
 }
-const revealBird = () => {
+const revealBird = (xArray, yArray) => {
   document.getElementById("bird-image").style.display = "unset";
+  // console.log('x array: ' + xArray, 'y array: ' + yArray)
+  let xStorage = xArray[xArray.length - 1];
+  let yStorage = yArray[yArray.length - 1];
+  document.getElementById('bird-image').style.left = xStorage + '%'
+  document.getElementById('bird-image').style.top = yStorage + '%'
   hideImageDelay()
 }
 
@@ -98,7 +107,7 @@ window.addEventListener('mousemove', () => {
   let distanceX = Math.round(Math.pow(event.pageX - targetObjectPosition.x, 2)),
     distanceY = Math.round(Math.pow(event.pageY - targetObjectPosition.y, 2)),
     distance = Math.round(Math.pow((distanceX + distanceY), 0.5));
-  console.log('x^2: ' + distanceX, 'y^2: ' + distanceY, 'distance^0.5: ' + distance);
+  // console.log('x^2: ' + distanceX, 'y^2: ' + distanceY, 'distance^0.5: ' + distance);
   audio.playbackRate = getPlaybackRate(distance);
 })
 
